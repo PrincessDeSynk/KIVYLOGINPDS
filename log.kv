@@ -1,0 +1,126 @@
+WindowManager:
+	MainWindow:
+	SigninWindow:
+	LoginWindow:
+
+<MainWindow>:
+	name : "main"
+	username : verify_name
+	password : verify_password	
+	FloatLayout :
+		Label:
+			text : "Username : "
+			font_size : 40
+			size_hint : 0.4,0.15
+			pos_hint : {"x":0.1,"y":0.75}
+		TextInput : 
+			id : verify_name
+			font_size : 25
+			size_hint : 0.4,0.11
+			pos_hint : {"x":0.5,"y":0.75}
+			multiline : False
+		Label:
+			text : "Password: "
+			font_size : 40
+			size_hint : 0.4,0.15
+			pos_hint : {"x":0.1,"y":0.60}
+		TextInput :
+			id : verify_password
+			font_size : 25 
+			size_hint : 0.4,0.11
+			pos_hint : {"x":0.5,"y":0.60}	
+			multiline : False
+			password : True		
+		Button:
+			text : "Sign In / Create Account"
+			font_size : 25 
+			size_hint : 0.5,0.15
+			pos_hint : {"x":0.25,"y":0.1}
+			on_release:
+				app.root.current = "signin"	
+				root.manager.transition.direction = "right"
+		Button:
+			text : "Login"
+			font_size : 25 
+			size_hint : 0.4,0.11
+			pos_hint : {"x":0.3,"y":0.35}
+			on_release :
+				if root.verification() == 1: root.manager.current = "login"
+
+
+
+
+
+
+				
+
+<SigninWindow>:
+	name : "signin"
+	username : new_name
+	password : new_password
+	email : new_email
+	FloatLayout: 
+		Label:
+			text : "Username: "
+			font_size : 30
+			size_hint : 0.4,0.10
+			pos_hint : {"x":0.1,"y":0.8}
+		TextInput :
+			id : new_name
+			font_size : 25 
+			size_hint : 0.4,0.08
+			pos_hint : {"x":0.5,"y":0.81}
+		Label:
+			text : "Email: "
+			font_size : 30
+			size_hint : 0.30,0.10
+			pos_hint : {"x":0.1,"y":0.67}
+		TextInput :
+			id : new_email
+			font_size : 25 
+			size_hint : 0.5,0.08
+			pos_hint : {"x":0.4,"y":0.68}					
+		Label:
+			text : "Password: "
+			font_size : 30
+			size_hint : 0.4,0.10
+			pos_hint : {"x":0.1,"y":0.54}
+		TextInput :
+			id : new_password
+			font_size : 25 
+			size_hint : 0.4,0.08
+			pos_hint : {"x":0.5,"y":0.55}
+		Button:
+			text : "Back"	
+			font_size : 30		
+			size_hint : 0.5,0.12
+			pos_hint : {"x":0.25,"y":0.1}
+			on_release:
+				app.root.current = "main"	
+				root.manager.transition.direction = "left"
+		Button:
+			text : "Create Account"
+			font_size : 25 
+			size_hint : 0.4,0.11
+			pos_hint : {"x":0.3,"y":0.35}
+			on_release :
+				root.create_account()		
+
+
+<LoginWindow>:
+	name :"login"
+	
+	FloatLayout :
+		Label:
+			text : "Hello User !\n\n Kivy is a python framework developed for making gui applications which work on\n multiple operating systems like Windows , Android or MacOS.\nThis is a basic gui application that is made using Kivy. A Database class\n is used here to mantain the information of all the registered users(who signs in).\nThis database is a very basic DBMS, which run purely on file handling.The file named,\n 'entries.txt' holds names, passwords and emails of all the registered \nusers in a sequential manner.Only the registered users can log in.Thank\n you for reading this.Click Back to exit.  :)"
+			font_size : 20
+			size_hint : 0.6,0.6
+			pos_hint : {"x":0.2,"y":0.3}	
+		Button:
+			text : "Back"	
+			font_size : 30		
+			size_hint : 0.5,0.12
+			pos_hint : {"x":0.25,"y":0.15}
+			on_release:
+				app.root.current = "main"	
+				root.manager.transition.direction = "right"					
